@@ -34,13 +34,6 @@ public class ReservationService {
 
     private static final int NUMBER_OF_WEEK = 7;
 
-//    @Transactional
-//    public Reservation createReservation(Long memberId, Long roomId, String yyyyMMdd, String fromHHmm, String toHHmm, int repeatableCount){
-//        final Member member = memberRepository.findById(memberId).orElseThrow(RuntimeException::new);
-//        final Room room = roomRepository.findById(roomId).orElseThrow(RuntimeException::new);
-//        return createReservation(member, room, yyyyMMdd, fromHHmm, toHHmm, repeatableCount);
-//    }
-
     @Transactional
     public List<Reservation> createReservation(ReservationRequest request) {
         final Optional<Member> optionalMember = memberRepository.findByName(request.getMemberName());

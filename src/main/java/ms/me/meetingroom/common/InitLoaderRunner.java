@@ -5,7 +5,6 @@ import ms.me.meetingroom.entity.Member;
 import ms.me.meetingroom.entity.Room;
 import ms.me.meetingroom.service.MemberService;
 import ms.me.meetingroom.service.ReservationService;
-import ms.me.meetingroom.service.ReservationValidator;
 import ms.me.meetingroom.service.RoomService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
-import static ms.me.meetingroom.service.ReservationValidator.*;
+import static ms.me.meetingroom.service.ReservationValidator.dateFormatter;
 
 @Component
 @RequiredArgsConstructor

@@ -3,15 +3,11 @@ package ms.me.meetingroom.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import ms.me.meetingroom.entity.Member;
-import ms.me.meetingroom.repository.MemberRepository;
 import ms.me.meetingroom.service.MemberService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 @RestController
