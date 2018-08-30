@@ -1,9 +1,10 @@
 package ms.me.meetingroom.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import ms.me.meetingroom.common.ApiExceptionHandler;
 import ms.me.meetingroom.entity.Room;
 import ms.me.meetingroom.repository.RoomRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,11 +12,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Slf4j
-@RequiredArgsConstructor
 @Transactional
 public class RoomService {
+    static Logger log = LoggerFactory.getLogger(RoomService.class);
+
     private final RoomRepository roomRepository;
+
+    public RoomService(RoomRepository roomRepository) {
+        this.roomRepository = roomRepository;
+    }
 
     public Room createRoom(String roomName){
         Room room = new Room();

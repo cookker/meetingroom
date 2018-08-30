@@ -1,6 +1,5 @@
 package ms.me.meetingroom.common;
 
-import lombok.RequiredArgsConstructor;
 import ms.me.meetingroom.entity.Member;
 import ms.me.meetingroom.entity.Room;
 import ms.me.meetingroom.service.MemberService;
@@ -15,11 +14,16 @@ import java.time.LocalDate;
 import static ms.me.meetingroom.service.ReservationValidator.dateFormatter;
 
 @Component
-@RequiredArgsConstructor
 public class InitLoaderRunner implements ApplicationRunner {
     private final RoomService roomService;
     private final MemberService memberService;
     private final ReservationService reservationService;
+
+    public InitLoaderRunner(RoomService roomService, MemberService memberService, ReservationService reservationService) {
+        this.roomService = roomService;
+        this.memberService = memberService;
+        this.reservationService = reservationService;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {

@@ -1,8 +1,8 @@
 package ms.me.meetingroom.service;
 
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import ms.me.meetingroom.common.ReservationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 import java.time.DayOfWeek;
@@ -11,8 +11,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 
-@Slf4j
 public class ReservationValidator {
+    static Logger log = LoggerFactory.getLogger(ReservationValidator.class);
+
     public static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
     public static final DateTimeFormatter dateDashFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
@@ -109,9 +110,13 @@ public class ReservationValidator {
         return this;
     }
 
-    @AllArgsConstructor
     public static class ReservationDateDto{
         String fromyyyyMMddHHmm;
         String toyyyyMMddHHmm;
+
+        public ReservationDateDto(String fromyyyyMMddHHmm, String toyyyyMMddHHmm) {
+            this.fromyyyyMMddHHmm = fromyyyyMMddHHmm;
+            this.toyyyyMMddHHmm = toyyyyMMddHHmm;
+        }
     }
 }

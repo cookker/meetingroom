@@ -22,8 +22,8 @@ public class MemberRepositoryTest {
     @Test
     public void basic_crud_test(){
         Member member = new Member();
-        member.setName("user1");
-        member.setPassword("1234");
+        member.setName("users1");
+        member.setPassword("12345");
         memberRepository.save(member);
         final List<Member> members = memberRepository.findAll();
         assertThat(members.size()).isEqualTo(1);

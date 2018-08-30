@@ -1,7 +1,5 @@
 package ms.me.meetingroom.controller;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import ms.me.meetingroom.common.DateUtils;
 import ms.me.meetingroom.common.Response;
 import ms.me.meetingroom.controller.param.ReservationRequest;
@@ -9,15 +7,19 @@ import ms.me.meetingroom.controller.param.ReservationUpdateRequest;
 import ms.me.meetingroom.controller.param.WeekDayResponse;
 import ms.me.meetingroom.entity.Reservation;
 import ms.me.meetingroom.service.ReservationService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
-@Slf4j
 public class ReservationController {
-    private final ReservationService reservationService;
+    Logger log = LoggerFactory.getLogger(ReservationController.class);
+    @Autowired
+    private ReservationService reservationService;
+
 
     @GetMapping("/reservations/{roomName}")
     public List<Reservation> getReservations(@PathVariable String roomName, @RequestParam("date") String weekOfdate){

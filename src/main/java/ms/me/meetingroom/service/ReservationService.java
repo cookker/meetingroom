@@ -1,7 +1,5 @@
 package ms.me.meetingroom.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import ms.me.meetingroom.common.DateUtils;
 import ms.me.meetingroom.controller.param.ReservationRequest;
 import ms.me.meetingroom.controller.param.ReservationUpdateRequest;
@@ -11,6 +9,8 @@ import ms.me.meetingroom.entity.Room;
 import ms.me.meetingroom.repository.MemberRepository;
 import ms.me.meetingroom.repository.ReservationRepository;
 import ms.me.meetingroom.repository.RoomRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,12 +25,18 @@ import static ms.me.meetingroom.service.ReservationValidator.dateFormatter;
 import static ms.me.meetingroom.service.ReservationValidator.timeFormatter;
 
 @Service
-@RequiredArgsConstructor
-@Slf4j
 public class ReservationService {
+    static Logger log = LoggerFactory.getLogger(ReservationService.class);
+
     private final ReservationRepository reservationRepository;
     private final MemberRepository memberRepository;
     private final RoomRepository roomRepository;
+
+    public ReservationService(ReservationRepository reservationRepository, MemberRepository memberRepository, RoomRepository roomRepository) {
+        this.reservationRepository = reservationRepository;
+        this.memberRepository = memberRepository;
+        this.roomRepository = roomRepository;
+    }
 
     private static final int NUMBER_OF_WEEK = 7;
 

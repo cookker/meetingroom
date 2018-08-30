@@ -1,7 +1,5 @@
 package ms.me.meetingroom.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import ms.me.meetingroom.entity.Member;
 import ms.me.meetingroom.repository.MemberRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,11 +16,14 @@ import java.util.Collection;
 import java.util.Optional;
 
 @Service
-@Slf4j
-@RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+
+    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder) {
+        this.memberRepository = memberRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public Optional<Member> findByName(String name) {
         return memberRepository.findByName(name);

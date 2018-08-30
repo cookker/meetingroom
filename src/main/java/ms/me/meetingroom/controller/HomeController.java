@@ -1,16 +1,16 @@
 package ms.me.meetingroom.controller;
 
-import lombok.RequiredArgsConstructor;
 import ms.me.meetingroom.entity.Member;
 import ms.me.meetingroom.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@RequiredArgsConstructor
 public class HomeController {
-    private final MemberService memberService;
+    @Autowired
+    private MemberService memberService;
 
     @GetMapping("/")
     public String home(){
