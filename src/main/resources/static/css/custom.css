@@ -1,0 +1,22 @@
+#grid{
+    border:5px solid gray;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas:
+            "header  header  header"
+            "sidebar content content"
+            ;
+}
+.list-group-item{
+    cursor: pointer;
+}
+.header {
+    grid-area: header;
+}
+.content{
+    grid-area: content;
+}
+.top-date{
+    float: left;
+    display: inline;
+}
